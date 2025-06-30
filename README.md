@@ -38,22 +38,32 @@ rm -rf arpack/.git
 ```
 
 
-### Building SPOOLES and ARPACK
+### Building SPOOLES, ARPACK then Calculix
 
 First instal the dependencies requiered:
 ```
-apt-get install -y build-essential openmpi-bin openmpi-common libopenmpi-dev
+apt-get install -y build-essential openmpi-bin openmpi-common libopenmpi-dev libblas-dev liblapack-dev
 ```
 
 Then just run
 ```
-make global
+make global -j
 ```
 inside the SPOOLES.2.2 folder
 
-
-and ru
+and run
 ```
-make lib
+make lib -j
 ```
 inside the ARPACK folder
+
+and run
+```
+make -j
+```
+in the CalculiX/ccx_2.22/src folder. An executable named ccx_2.22 should appear. Copy it to a nicer location with:
+```
+cp ccx_2.22 ../../..
+```
+
+

@@ -100,12 +100,12 @@ PLIBS = $(PARPACKLIB) $(ALIBS) $(MPILIBS)
 #  Various compilation programs and flags.
 #  You need to make sure these are correct for your system.
 #
-FC      = ftn
-FFLAGS	= -O3 
+FC      = mpifort
+FFLAGS	= -O3 -std=legacy
 
 # Set the parallel fortran compiler
-PFC      = ftn
-PFFLAGS	= -O3 
+PFC      = mpifort
+PFFLAGS	= -O3 -std=legacy
 
 LDFLAGS = 
 CD	= cd
@@ -121,7 +121,7 @@ CP	 = cp
 #  To find the path for cpp, try `man cpp', and it should list the path
 #  at the top, under `Syntax'.  It is usually in /lib.
 CPP	 = /lib/cpp
-CPPFLAGS =
+CPPFLAGS = -O3
 
 ECHO	 = echo
 
@@ -145,8 +145,8 @@ TAR	 = tar
 
 #  For System V based machine without ranlib, like Cray and SGI, 
 #  use touch instead.
-#RANLIB   = touch
-RANLIB   = ranlib
+RANLIB   = touch
+#RANLIB   = ranlib
 
 #
 #  This is the general help target.

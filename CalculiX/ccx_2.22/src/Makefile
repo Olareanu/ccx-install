@@ -1,14 +1,14 @@
 
-CFLAGS = -Wall -O2  -I ../../../SPOOLES.2.2 -DARCH="Linux" -DSPOOLES -DARPACK -DMATRIXSTORAGE -DNETWORKOUT
-FFLAGS = -Wall -O2
+CFLAGS = -Wall -O3 -flto=auto -fuse-linker-plugin -I ../../../SPOOLES.2.2 -DARCH="Linux" -DSPOOLES -DARPACK -DMATRIXSTORAGE -DNETWORKOUT
+FFLAGS = -Wall -O3 -flto=auto -fuse-linker-plugin
 
-CC=cc
-FC=gfortran
+CC=mpicc
+FC=mpif90
 
 .c.o :
-	$(CC) $(CFLAGS) -c $<
+        $(CC) $(CFLAGS) -c $<
 .f.o :
-	$(FC) $(FFLAGS) -c $<
+        $(FC) $(FFLAGS) -c $<
 
 include Makefile.inc
 
@@ -22,11 +22,17 @@ DIR=../../../SPOOLES.2.2
 
 LIBS = \
        $(DIR)/spooles.a \
-	../../../ARPACK/libarpack_INTEL.a \
-       -lpthread -lm -lc
+        ../../../ARPACK/libarpack_AO.a \
+        -llapack -lblas -lpthread -lm -lc
 
-ccx_2.22: $(OCCXMAIN) ccx_2.22.a  $(LIBS)
-	./date.pl; $(CC) $(CFLAGS) -c ccx_2.22.c; $(FC)  -Wall -O2 -o $@ $(OCCXMAIN) ccx_2.22.a $(LIBS) -fopenmp
+ccx_2.22: $(OCCXMAIN) ccx_2.22.a
+        ./date.pl; $(CC) $(CFLAGS) -c ccx_2.22.c; $(FC)  -Wall -O3 -o $@ $(OCCXMAIN) ccx_2.22.a $(LIBS) -fopenmp
 
 ccx_2.22.a: $(OCCXF) $(OCCXC)
-	ar vr $@ $?
+        ar vr $@ $?
+
+clean:
+        rm -f *.o ccx_2.22.a ccx_2.22 date.c
+        @echo "Clean complete"
+
+.PHONY: clean
