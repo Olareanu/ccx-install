@@ -54,7 +54,7 @@ make global -j
 ```
 and inside the ARPACK folder first modify the home value in the ARmake.inc file to the absolute path of the ARPACK folder you are in, then run
 ```
-make lib -j
+sudo make lib -j
 ```
 and in the CalculiX/ccx_2.22/src folder run
 ```

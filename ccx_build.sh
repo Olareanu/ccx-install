@@ -18,7 +18,7 @@ cd ARPACK
 ARPACK_PATH=$(pwd)
 sed -i "s|^home.*|home = $ARPACK_PATH|" ARmake.inc
 
-make lib -j
+sudo make lib -j
 cd ..
 
 # Build CalculiX
