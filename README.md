@@ -65,7 +65,7 @@ An executable named ccx_2.22 should appear. Copy it to a nicer location with:
 cp ccx_2.22 ../../..
 ```
 
-
+Or run the ccx_build.sh bash script that will do the same. Building ARPACK does require sudo.
 
 
 These files are (as far as I know) taken from the original sources of the software, but I provide no guarantee any of this works or produces correct results.
