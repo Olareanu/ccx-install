@@ -100,7 +100,7 @@ PLIBS = $(PARPACKLIB) $(ALIBS) $(MPILIBS)
 #  Various compilation programs and flags.
 #  You need to make sure these are correct for your system.
 #
-FC      = mpifort
+FC      = mpif90
 FFLAGS	= -O3 -std=legacy
 
 # Set the parallel fortran compiler
