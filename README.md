@@ -27,10 +27,18 @@ Note: makefile ~/SPOOLES.2.2/Tree/src/makeGlobalLib contains an
          error: file drawTree.c does not exist and should be replaced
          by draw.c
 
+
+# Download ARPACK
+git clone https://bitbucket.org/chaoyang2013/arpack.git
+rm -rf arpack/.git
+
+
+# Mofify the ARPACK/ARmake.inc file, set home and plat
+
 ```
 
 
-### Building SPOOLES
+### Building SPOOLES and ARPACK
 
 First instal the dependencies requiered:
 ```
@@ -41,4 +49,11 @@ Then just run
 ```
 make global
 ```
-inside the SPOOLES.2.2 folder.
+inside the SPOOLES.2.2 folder
+
+
+and ru
+```
+make lib
+```
+inside the ARPACK folder
