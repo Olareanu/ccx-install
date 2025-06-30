@@ -121,7 +121,7 @@ CP	 = cp
 #  To find the path for cpp, try `man cpp', and it should list the path
 #  at the top, under `Syntax'.  It is usually in /lib.
 CPP	 = /lib/cpp
-CPPFLAGS = -O3
+CPPFLAGS =
 
 ECHO	 = echo
 

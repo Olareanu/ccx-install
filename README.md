@@ -50,15 +50,15 @@ clone https://github.com/Olareanu/ccx-install.git
 
 Then inside the SPOOLES.2.2 folder just run
 ```
-make global -j
+sudo make global -j
 ```
 and inside the ARPACK folder first modify the home value in the ARmake.inc file to the absolute path of the ARPACK folder you are in, then run
 ```
-make lib -j
+sudo make lib -j
 ```
 and in the CalculiX/ccx_2.22/src folder run
 ```
-make -j
+sudo make -j
 ```
 An executable named ccx_2.22 should appear. Copy it to a nicer location with:
 ```

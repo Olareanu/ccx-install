@@ -26,7 +26,10 @@ LIBS = \
 	-llapack -lblas -lpthread -lm -lc
 
 ccx_2.22: $(OCCXMAIN) ccx_2.22.a
-	./date.pl; $(CC) $(CFLAGS) -c ccx_2.22.c; $(FC)  -Wall -O3 -o $@ $(OCCXMAIN) ccx_2.22.a $(LIBS) -fopenmp
+	chmod +x ./date.pl
+	./date.pl
+	$(CC) $(CFLAGS) -c ccx_2.22.c
+	$(FC)  -Wall -O3 -o $@ $(OCCXMAIN) ccx_2.22.a $(LIBS) -fopenmp
 
 ccx_2.22.a: $(OCCXF) $(OCCXC)
 	ar vr $@ $?
