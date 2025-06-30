@@ -27,7 +27,7 @@
 #  The complete path to the top level of ARPACK directory, usually
 #  $(HOME)/ARPACK
 #
-home          = /usr/local/ARPACK
+home          = /app/ARPACK
 #
 #  The platform identifier to suffix to the end of library names
 #
