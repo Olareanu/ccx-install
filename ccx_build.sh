@@ -5,9 +5,6 @@ set -e
 sudo apt-get update
 sudo apt-get install -y build-essential openmpi-bin openmpi-common libopenmpi-dev libblas-dev liblapack-dev
 
-# Clone the repository
-git clone https://github.com/Olareanu/ccx-install.git
-cd ccx-install
 
 # Build SPOOLES
 cd SPOOLES.2.2
