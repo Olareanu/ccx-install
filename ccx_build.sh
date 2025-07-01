@@ -22,16 +22,16 @@ sudo apt-get install -y \
     pkg-config\
     2to3
 
-# # Build SPOOLES
-# cd SPOOLES.2.2
-# make global -j
-# cd ..
+# Build SPOOLES
+cd SPOOLES.2.2
+make global -j
+cd ..
 
-# # Build CalculiX
-# cd CalculiX/ccx_2.22/src
-# make -j
+# Build CalculiX
+cd CalculiX/ccx_2.22/src
+make -j
 
-# # Copy executable to nicer location
-# cp ccx_2.22 ../../..
+# Copy executable to nicer location
+cp ccx_2.22 ../../..
 
-# echo "Build complete. Executable copied to CalculiX/ccx_2.22/ccx_2.22"
+echo "Build complete. Executable copied to CalculiX/ccx_2.22/ccx_2.22"
