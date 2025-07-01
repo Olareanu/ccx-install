@@ -19,7 +19,7 @@ import re;
 import shlex;
 import os;
 import shutil;
-import imp;
+import importlib.util;
 from os import path;
 from optparse import OptionParser,OptionGroup;
 from datetime import datetime;
