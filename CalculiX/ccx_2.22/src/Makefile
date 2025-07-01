@@ -22,8 +22,10 @@ DIR=../../../SPOOLES.2.2
 
 LIBS = \
        $(DIR)/spooles.a \
-	../../../ARPACK/libarpack_AO.a \
+	-lparpack -larpack \
 	-llapack -lblas -lpthread -lm -lc
+
+#	Or use self compiled ARPACK ../../../ARPACK/libarpack_AO.a \ 
 
 ccx_2.22: $(OCCXMAIN) ccx_2.22.a
 	chmod +x ./date.pl

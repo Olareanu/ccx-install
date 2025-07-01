@@ -27,7 +27,7 @@ Note: makefile ~/SPOOLES.2.2/Tree/src/makeGlobalLib contains an
          by draw.c
 
 
-# Downloaded ARPACK
+# Downloaded ARPACK (optional)
 git clone https://bitbucket.org/chaoyang2013/arpack.git
 rm -rf arpack/.git
 
@@ -37,11 +37,11 @@ rm -rf arpack/.git
 ```
 
 
-### Building SPOOLES, ARPACK then Calculix
+### Building SPOOLES, then Calculix
 
 First instal the dependencies requiered:
 ```
-apt-get install -y build-essential openmpi-bin openmpi-common libopenmpi-dev libblas-dev liblapack-dev
+apt-get install -y build-essential openmpi-bin openmpi-common libopenmpi-dev libblas-dev liblapack-dev libarpack2-dev libparpack2-dev
 ```
 Clone the repo:
 ```
@@ -52,10 +52,6 @@ Then inside the SPOOLES.2.2 folder just run
 ```
 make global -j
 ```
-and inside the ARPACK folder first modify the home value in the ARmake.inc file to the absolute path of the ARPACK folder you are in, then run
-```
-sudo make lib -j
-```
 and in the CalculiX/ccx_2.22/src folder run
 ```
 make -j
@@ -65,7 +61,19 @@ An executable named ccx_2.22 should appear. Copy it to a nicer location with:
 cp ccx_2.22 ../../..
 ```
 
-Or run the ccx_build.sh bash script that will do the same. Building ARPACK does require sudo.
+Or run the ccx_build.sh bash script that will do the same.
 
 
+
+### Building with self compiled ARPACK
+
+The ARPACK source is also available, but is missing the necessary dependencies to compile for multithreaded use.
+To compile for single threaded use, inside the ARPACK folder first modify the home value in the ARmake.inc file to the absolute path of the ARPACK folder you are in, then run
+```
+sudo make lib -j
+```
+Before compiling Calculix, modify the Makefile by uncommenting the already provided line to use the self compiled ARPACK.
+
+
+### Disclaimer
 These files are (as far as I know) taken from the original sources of the software, but I provide no guarantee any of this works or produces correct results.

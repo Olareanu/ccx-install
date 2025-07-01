@@ -3,22 +3,12 @@ set -e
 
 # Install dependencies
 sudo apt-get update
-sudo apt-get install -y build-essential openmpi-bin openmpi-common libopenmpi-dev libblas-dev liblapack-dev
+sudo apt-get install -y build-essential openmpi-bin openmpi-common libopenmpi-dev libblas-dev liblapack-dev libarpack2-dev libparpack2-dev
 
 
 # Build SPOOLES
 cd SPOOLES.2.2
 make global -j
-cd ..
-
-# Build ARPACK
-cd ARPACK
-
-# Modify ARmake.inc 'home' value to current absolute path
-ARPACK_PATH=$(pwd)
-sed -i "s|^home.*|home = $ARPACK_PATH|" ARmake.inc
-
-sudo make lib -j
 cd ..
 
 # Build CalculiX
