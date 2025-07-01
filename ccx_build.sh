@@ -16,7 +16,11 @@ sudo apt-get install -y \
     libopenblas64-openmp-dev \
     liblapacke-dev \
     libhwloc-dev \
-    libscotch-dev
+    libscotch-dev \
+    flex\
+    bison \
+    pkg-config\
+    2to3
 
 # # Build SPOOLES
 # cd SPOOLES.2.2

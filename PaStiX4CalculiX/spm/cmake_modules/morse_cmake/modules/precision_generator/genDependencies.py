@@ -118,7 +118,7 @@ class GenConversion:
           replace = replace.replace('\)',')');
         data = re.sub(search, replace, data);
       except:
-        print('Bad replacement pair ', i, 'in', sub_type);
+        print('Bad replacement pair ', i, 'in', sub_type, file=sys.stderr);
         continue;
     return data;
 

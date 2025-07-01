@@ -1,0 +1,92 @@
+Copyright (c) 2009-2018 The University of Tennessee and The University
+                        of Tennessee Research Foundation.  All rights
+                        reserved.
+
+This file contains the main features as well as overviews of specific
+bug fixes (and other actions) for each version of PaRSEC since v1.1.0
+
+ - Add a PAPI-SDE interface to the parsec library, to expose internal
+   counters via the PAPI-Software Defined Events interface.
+
+ - Add a backend support for OTF2 in the profiling mechanism. OTF2 is
+   used automatically if a OTF2 installation is found.
+
+ - Add a MCA parameter to control the number of ejected blocks from GPU
+   memory (device_cuda_max_number_of_ejected_data). Add a MCA parameter
+   to control wether or not the GPU engine will take some time to sort
+   the first N tasks of the pending queue (device_cuda_sort_pending_list).
+
+ - Reshape the users vision of PaRSEC: they only have to include a single
+   header (parsec.h) for most usages, and link with a single library
+   (-lparsec).
+
+ - Update the PaRSEC DSL handling of initial tasks. We now rely on 2
+   pieces of information: the number of DSL tasks, and the number of
+   tasks imposed by the system (all types of data transfer).
+
+ - Add a purely local scheduler (ll), that uses a single LIFO per
+   thread. Each schedule operation does 1 atomic (push in local queue),
+   each select operation does up to t atomics (pop in local queue, then
+   try any other thread's queue until they are all tested empty).
+
+ - Add a --ignore-properties=... option to parsec_ptgpp
+
+ - Change API of hash tables: allow keys of arbitrary size. The API
+   features how to build a key from a task; how to hash a key into
+   1 <= N <= 64 bits; and how to compare twy keys (plus a printing
+   function to debug).
+
+ - Change behavior of DEBUG_HISTORY: log all information inside
+   a buffer of fixed size (MCA parameter) per thread, do not allocate
+   memory during logging, and use timestamp to re-order output
+   when the user calls dump()
+
+ - DTD interface is updated (new flag to send pointer as parameter,
+   unpacking of paramteres is simpler etc).
+
+ - DTD provides mca param (dtd_debug_verbose) to print information
+   about traversal of DAG in a separate output stream from the default.
+
+v 2.0.0rc2
+ - Rename all functions, files, directories from dague/DAGUE/DAGuE to
+   parsec/PARSEC/PaRSEC.
+
+v 2.0.0rc1
+ - .so support. Dynamic Library Build has been succesfully tested on
+   Linux platforms, reducing significantly the size of the compiled
+   dplasma/testing directory. Note that on modern architectures,
+   all depending libraries must be compiled either as Position Independent
+   Code (-fPIC) or as shared libraries. Hint: add --cflags="-fPIC" when
+   running the plasma-installer.
+ - The "inline_c %{ ... %}" block syntax has been simplified to either
+   "%c{ ... %}" or "%{ ... %}". The change is backward compatible.
+
+v 1.2.0
+ - The support for C is required from MPI.
+ - Revert to an older LEX syntax (not (?i:xxx))
+ - Don't recursively call the MPI communication engine progress function.
+ - Protect the runtime headers from inclusion in C++ files.
+ - Fix a memory leak allowing the remote data to be released once used.
+ - Integrate the new profiling system and the python interface (added
+   Panda support).
+ - Change several default parameters for the DPLASMA tests.
+ - Add Fortran support for the PaRSEC and the profiling API and add tests
+   to validate it.
+ - Backport all the profiling features from the devel branch (panda support,
+   simpler management, better integration with python, support for HDF5...).
+ - Change the colorscheme of the .dot generator
+ - Correctly compute the identifier of the tasks (ticket #33).
+ - Allocate the list items from the corresponding list using the requested
+   gap.
+ - Add support for older lex (without support for ?i).
+ - Add support for 128 bits atomics and resolve the lingering ABA issue.
+   When 128 bits atomics are not available fall back to an atomic lock
+   implementation of the most basic data structures.
+ - Required Cython 0.19.1 (at least)
+ - Completely disconnect the ordering of parameters and locals in the JDF.
+ - Many other minor bug fixes, code readability impeovement and typos.
+ - DPLASMA:
+   - Add the doxygen documentation generation.
+   - Improved ztrmm with all the matrix reads unified.
+   - Support for potri functions (trtri+lauum), and corresponding testings.
+   - Fix bug in symmetric/hermitian norms when A.mt < P.
