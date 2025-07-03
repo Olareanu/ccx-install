@@ -61,7 +61,7 @@ An executable named ccx_2.22 should appear. Copy it to a nicer location with:
 cp ccx_2.22 ../../..
 ```
 
-Or run the ccx_build.sh bash script that will do the same.
+Or run the ccx_build.sh bash script with sudo, that will do the same.
 
 
 
