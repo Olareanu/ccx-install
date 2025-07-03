@@ -32,6 +32,6 @@ cd CalculiX/ccx_2.22/src
 make -j
 
 # Copy executable to nicer location
-cp ccx_2.22 ../../../..
+cp ccx_2.22 ../../../../..
 
 echo "Build complete. Executable copied to parent folder"
