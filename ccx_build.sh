@@ -12,15 +12,15 @@ sudo apt-get install -y \
     liblapack-dev \
     libarpack2-dev \
     libparpack2-dev \
-    cmake \
-    libopenblas64-openmp-dev \
-    liblapacke-dev \
-    libhwloc-dev \
-    libscotch-dev \
-    flex\
-    bison \
-    pkg-config\
-    2to3
+    # cmake \
+    # libopenblas64-openmp-dev \
+    # liblapacke-dev \
+    # libhwloc-dev \
+    # libscotch-dev \
+    # flex\
+    # bison \
+    # pkg-config\
+    # 2to3
 
 # Build SPOOLES
 cd SPOOLES.2.2
@@ -32,6 +32,6 @@ cd CalculiX/ccx_2.22/src
 make -j
 
 # Copy executable to nicer location
-cp ccx_2.22 ../../..
+cp ccx_2.22 ../../../..
 
-echo "Build complete. Executable copied to CalculiX/ccx_2.22/ccx_2.22"
+echo "Build complete. Executable copied to parent folder"

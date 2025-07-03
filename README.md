@@ -1,6 +1,6 @@
 # ccx-install
 
-This repo contains all the files needed to build Calculux CCX, includeing the SPOOLES and ARPACK libraries.
+This repo contains all the files needed to build Calculux CCX, including the SPOOLES and ARPACK libraries.
 
 
 ### How these files were made
